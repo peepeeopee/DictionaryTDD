@@ -15,5 +15,14 @@ namespace ConsoleApplication1
 
     public class StringReplacer
     {
+        public string ReplaceOccurence(string destination, Dictionary<string,string> target)
+        {
+            if (destination == null)
+            {
+                throw new ArgumentNullException("The destination string cannot be empty");
+            }
+
+            return string.Empty;
+        }
     }
 }

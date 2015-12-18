@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ConsoleApplication1;
+using System.Collections.Generic;
 
 namespace UnitTestProject1
 {
@@ -20,6 +21,13 @@ input : "$temp$ here comes the name $name$", dict ["temp", "temporary"] ["name",
     [TestClass]
     public class UnitTest1
     {
-        
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void GivenNullStringReturnError()
+        {
+            var replacer = new StringReplacer();
+
+            var result = replacer.ReplaceOccurence(null, new Dictionary<string, string>());
+        }
     }
 }
