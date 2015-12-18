@@ -15,7 +15,7 @@ namespace ConsoleApplication1
 
     public class StringReplacer
     {
-        public string ReplaceOccurence(string destination, Dictionary<string,string> target)
+        public string ReplaceOccurence(string destination, Dictionary<string,string> targets)
         {
             var updatedText = string.Empty;
 
@@ -26,7 +26,7 @@ namespace ConsoleApplication1
                 throw new ArgumentNullException("The destination string cannot be empty");
             }
 
-            if (destination == string.Empty && target.Count == 0)
+            if (destination == string.Empty && targets.Count == 0)
             {
                 return updatedText;
             }
@@ -34,6 +34,13 @@ namespace ConsoleApplication1
             CheckHasTargetCharacters(destination);
 
             #endregion
+
+            updatedText = destination;
+
+            foreach (var dict in targets)
+            {
+                updatedText = InsertTargetsIntoDestination(updatedText, dict.Key, dict.Value);
+            }
 
             return updatedText;
         }
@@ -56,6 +63,13 @@ namespace ConsoleApplication1
             {
                 throw new ArgumentException(string.Format("The destination string''s targets are not clear. Are you missing a {0}", targetCharacter));
             }
+        }
+
+        private string InsertTargetsIntoDestination(string destination, string target, string value)
+        {
+            var result = destination.Replace("$"+target+"$",value);
+
+            return result;
         }
     }
 }
