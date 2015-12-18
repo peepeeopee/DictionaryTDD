@@ -38,5 +38,14 @@ input : "$temp$ here comes the name $name$", dict ["temp", "temporary"] ["name",
 
             var result = replacer.ReplaceOccurence("xxxxx", new Dictionary<string, string>());
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void GivenStringWithOddNumberCharactersThrowError()
+        {
+            var replacer = new StringReplacer();
+
+            var result = replacer.ReplaceOccurence("$xx$xxx$", new Dictionary<string, string>());
+        }
     }
 }
