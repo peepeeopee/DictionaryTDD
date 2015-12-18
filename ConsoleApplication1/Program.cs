@@ -24,26 +24,31 @@ namespace ConsoleApplication1
                 throw new ArgumentNullException("The destination string cannot be empty");
             }
 
+            CheckHasTargetCharacters(destination);
+
+            #endregion
+
+            return string.Empty;
+        }
+
+        private static void CheckHasTargetCharacters(string destination)
+        {
             var hasTargetCharacters = false;
             var numberOfTargetCharacters = 0;
             var targetCharacter = '$';
 
             foreach (var character in destination.ToArray())
-	        {
+            {
                 if (character == targetCharacter)
                 {
                     numberOfTargetCharacters++;
-                }    
-	        }
+                }
+            }
 
             if (numberOfTargetCharacters == 0 || numberOfTargetCharacters % 2 != 0)
             {
                 throw new ArgumentException(string.Format("The destination string''s targets are not clear. Are you missing a {0}", targetCharacter));
             }
-
-            #endregion
-
-            return string.Empty;
         }
     }
 }
