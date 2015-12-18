@@ -17,10 +17,31 @@ namespace ConsoleApplication1
     {
         public string ReplaceOccurence(string destination, Dictionary<string,string> target)
         {
+            #region Validation
+            
             if (destination == null)
             {
                 throw new ArgumentNullException("The destination string cannot be empty");
             }
+
+            var hasTargetCharacters = false;
+            var numberOfTargetCharacters = 0;
+            var targetCharacter = '$';
+
+            foreach (var character in destination.ToArray())
+	        {
+                if (character == targetCharacter)
+                {
+                    numberOfTargetCharacters++;
+                }    
+	        }
+
+            if (numberOfTargetCharacters == 0 || numberOfTargetCharacters % 2 != 0)
+            {
+                throw new ArgumentException(string.Format("The destination string''s targets are not clear. Are you missing a {0}", targetCharacter));
+            }
+
+            #endregion
 
             return string.Empty;
         }
