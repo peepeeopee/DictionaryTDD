@@ -17,6 +17,8 @@ namespace ConsoleApplication1
     {
         public string ReplaceOccurence(string destination, Dictionary<string,string> target)
         {
+            var updatedText = string.Empty;
+
             #region Validation
             
             if (destination == null)
@@ -24,11 +26,16 @@ namespace ConsoleApplication1
                 throw new ArgumentNullException("The destination string cannot be empty");
             }
 
+            if (destination == string.Empty && target == new Dictionary<string,string>())
+            {
+                return updatedText;
+            }
+
             CheckHasTargetCharacters(destination);
 
             #endregion
 
-            return string.Empty;
+            return updatedText;
         }
 
         private static void CheckHasTargetCharacters(string destination)
