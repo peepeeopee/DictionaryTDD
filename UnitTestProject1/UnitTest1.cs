@@ -47,5 +47,15 @@ input : "$temp$ here comes the name $name$", dict ["temp", "temporary"] ["name",
 
             var result = replacer.ReplaceOccurence("$xx$xxx$", new Dictionary<string, string>());
         }
+
+        [TestMethod]
+        public void GivenEmptyStringAndEmptyDictionaryReturnsEmptyString()
+        {
+            var replacer = new StringReplacer();
+
+            var result = replacer.ReplaceOccurence(string.Empty, new Dictionary<string, string>());
+
+            Assert.IsTrue(result == string.Empty);
+        }
     }
 }
