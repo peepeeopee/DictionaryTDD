@@ -26,7 +26,7 @@ namespace ConsoleApplication1
                 throw new ArgumentNullException("The destination string cannot be empty");
             }
 
-            if (destination == string.Empty && target == new Dictionary<string,string>())
+            if (destination == string.Empty && target.Count == 0)
             {
                 return updatedText;
             }
